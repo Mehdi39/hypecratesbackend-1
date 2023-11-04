@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema(
       required: false,
     },
     cart: [{}],
-   user_info: {
+    user_info: {
       name: {
         type: String,
         required: false,
@@ -56,7 +56,7 @@ const orderSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
-   
+
     total: {
       type: Number,
       required: true,
@@ -83,11 +83,11 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
-const Order =mongoose.model(
-    'Order',
-    orderSchema.plugin(AutoIncrement, {
-      inc_field: 'invoice',
-      start_seq: 10000,
-    })
-  );
+const Order = mongoose.model(
+  'Order',
+  orderSchema.plugin(AutoIncrement, {
+    inc_field: 'invoice',
+    start_seq: 10000,
+  })
+);
 module.exports = Order;
