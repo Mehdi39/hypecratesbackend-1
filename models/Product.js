@@ -15,11 +15,11 @@ const productSchema = new mongoose.Schema(
       required: false,
     },
     title: {
-      type: Object,
+      type: String,
       required: true,
     },
     description: {
-      type: Object,
+      type: String,
       required: false,
     },
     slug: {
