@@ -15,28 +15,28 @@ const productSchema = new mongoose.Schema(
       required: false,
     },
     title: {
-      type: String,
+      type: Object,
       required: true,
     },
     description: {
-      type: String,
+      type: Object,
       required: false,
     },
     slug: {
       type: String,
-      required: false,
+      required: true,
     },
     categories: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category",
-        required: false,
+        required: true,
       },
     ],
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
-      required: false,
+      required: true,
     },
     image: {
       type: Array,
@@ -56,11 +56,11 @@ const productSchema = new mongoose.Schema(
     prices: {
       originalPrice: {
         type: Number,
-        required: false,
+        required: true,
       },
       price: {
         type: Number,
-        required: false,
+        required: true,
       },
       discount: {
         type: Number,
@@ -70,7 +70,7 @@ const productSchema = new mongoose.Schema(
     variants: [{}],
     isCombination: {
       type: Boolean,
-      required: false,
+      required: true,
     },
 
     status: {
