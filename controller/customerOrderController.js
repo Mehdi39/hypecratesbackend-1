@@ -1,6 +1,9 @@
 require("dotenv").config();
-const stripe = require("stripe")(`${process.env.STRIPE_KEY}` || null); /// use hardcoded key if env not work
+const stripe = require("stripe")(`${process.env.STRIPE_KEY}` || null); // use hardcoded key if env not work
 
+(async () => {
+  console.log(await stripe.plans.list())
+})
 const mongoose = require("mongoose");
 
 const Order = require("../models/Order");
@@ -26,6 +29,7 @@ const addOrder = async (req, res) => {
 
 //create payment intent for stripe
 const createPaymentIntent = async (req, res) => {
+
   const { total: amount, cardInfo: payment_intent, email } = req.body;
   // Validate the amount that was passed from the client.
   if (!(amount >= process.env.MIN_AMOUNT && amount <= process.env.MAX_AMOUNT)) {
@@ -55,6 +59,7 @@ const createPaymentIntent = async (req, res) => {
       }
     }
   }
+
   try {
     // Create PaymentIntent from body params.
     const params = {
@@ -169,6 +174,7 @@ const getOrderCustomer = async (req, res) => {
     });
   }
 };
+
 const getOrderById = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
